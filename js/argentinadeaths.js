@@ -1,36 +1,36 @@
 var argPromise = d3.csv("csv/argentinadeaths.csv")
 
-var successFCN = function(argdeaths)
+var successFCNarg = function(argdeaths)
 {
     console.log("argdeaths",argdeaths);
-    initGraph(argdeaths);
+    initGraphArg(argdeaths);
     
 }
 
-var failFCN = function(error)
+var failFCNarg = function(error)
 {
     console.log("error",error);
 }
 
 
-argPromise.then(successFCN,failFCN);
+argPromise.then(successFCNarg,failFCNarg);
 
 //usdeaths is the array of data
 //target is the selection of the g element to place the graph in
 //xscale,yscale are the x and y scales.
-var drawLines = function(argdeaths,target,
+var drawLinesArg = function(argdeaths,target,
                          xScale,yScale)
 {
-   var lineGenerator= d3.line()
-        .x(function(argdeaths,i)
+   var lineGeneratorArg= d3.line()
+        .x(function(argdeath)
           {
-            return xScale(i);
+            return xScale(argdeath.year);
         })
-        .y(function(argdeaths)
+        .y(function(argdeath)
           {
-            return yScale(argdeaths)
+            return yScale(argdeath.deaths)
             })
-   
+  /* 
   var lines= d3.select("#graph2")
             .select("#graph")
             .selectAll("g")
@@ -64,19 +64,17 @@ var drawLines = function(argdeaths,target,
         .classed("selected",false)
     }
    )
-
-    lines.append("path")
-       .datum(function(argdeaths)
-                {
-                    //console.log("function")
-                    return argdeaths
-                })
-       .attr("d", lineGenerator)
+*/
+   d3.select("#graph2")
+    .select("#graph") 
+   .append("path")
+       .datum(argdeaths)
+       .attr("d", lineGeneratorArg)
     
 }
 
 
-var makeTranslateString = function(x,y)
+var makeTranslateStringArg = function(x,y)
 {
     return "translate("+x+","+y+")";
 }
@@ -85,14 +83,14 @@ var makeTranslateString = function(x,y)
 //graphDim is an object that describes the width and height of the graph area.
 //margins is an object that describes the space around the graph
 //xScale and yScale are the scales for the x and y scale.
-var drawAxes = function(graphDim,margins,
+var drawAxesArg = function(graphDim,margins,
                          xScale,yScale)
 {
    
   var xAxis= d3.axisBottom(xScale)
   
   
-    d3.select("svg")
+    d3.select("#graph2")
         .append("g")
          .attr("transform","translate("+margins.left+","+(margins.top+graphDim.height)+")")
         .call(xAxis)
@@ -108,7 +106,7 @@ var drawAxes = function(graphDim,margins,
 
 //graphDim -object that stores dimensions of the graph area
 //margins - object that stores the size of the margins
-var drawLabels = function(graphDim,margins)
+var drawLabelsArg = function(graphDim,margins)
 {
     var labels=d3.select("#graph2")
         .append("g")
@@ -142,27 +140,27 @@ var drawLabels = function(graphDim,margins)
 
 
 //sets up several important variables and calls the functions for the visualization.
-var initGraph = function(argdeaths)
+var initGraphArg = function(argdeaths)
 {
     //size of screen
-    var screen = {width:800,height:600}
+    var screen = {width:700,height:500}
     //how much space on each side
     var margins = {left:50,right:20,top:40,bottom:50}
     
    
     
-    var graph = 
+    var graphArg = 
         {
             width:screen.width-margins.left-margins.right,
-            height:screen.height - margins.top-margins.bottom
+            height:screen.height/2 - margins.top-margins.bottom
         }
-    console.log(graph);
+    console.log(graphArg);
     
     d3.select("#graph2")
     .attr("width",screen.width)
     .attr("height",screen.height)
     
-    var target = d3.select("svg")
+    var targetArg = d3.select("#graph2")
     .append("g")
     .attr("id","graph")
     .attr("transform",
@@ -174,16 +172,16 @@ var initGraph = function(argdeaths)
                         // {return quiz.day});
     
     var xScale = d3.scaleLinear()
-        .domain([1970,2020])
-        .range([0,graph.width])
+        .domain([2000,2020])
+        .range([0,graphArg.width])
 
     var yScale = d3.scaleLinear()
-        .domain([0,50])
-        .range([graph.height,0])
+        .domain([0,100])
+        .range([graphArg.height,0])
     
-    drawAxes(graph,margins,xScale,yScale);
-    drawLines(argdeaths,target,xScale,yScale);
-    drawLabels(graph,margins);
+    drawAxesArg(graphArg,margins,xScale,yScale);
+    drawLinesArg(argdeaths,targetArg,xScale,yScale);
+    drawLabelsArg(graphArg,margins);
    
 }
 

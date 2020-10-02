@@ -1,35 +1,36 @@
-var deathPromise = d3.csv("csv/usdeaths.csv")
 
-var successFCN = function(usdeaths)
+
+var successFCNus = function(usdeaths)
 {
     console.log("usdeaths",usdeaths);
-    initGraph(usdeaths);
+    initGraphUs(usdeaths);
     
 }
 
-var failFCN = function(error)
+var failFCNus = function(error)
 {
     console.log("error",error);
 }
 
-
-deathPromise.then(successFCN,failFCN);
+var deathPromise = d3.csv("csv/usdeaths.csv")
+deathPromise.then(successFCNus,failFCNus);
 
 //usdeaths is the array of data
 //target is the selection of the g element to place the graph in
 //xscale,yscale are the x and y scales.
-var drawLines = function(usdeaths,target,
+var drawLinesUs = function(usdeaths,target,
                          xScale,yScale)
 {
-   var lineGenerator= d3.line()
-        .x(function(usdeaths,i)
+   var lineGeneratorUs= d3.line()
+        .x(function(usdeath)
           {
-            return xScale(i);
+            return xScale(usdeath.year);
         })
-        .y(function(usdeaths)
+        .y(function(usdeath)
           {
-            return yScale(usdeaths)
+            return yScale(usdeath.deathnumber)
             })
+   /*
    
   var lines= d3.select("#graph1")
             .select("#graph")
@@ -56,7 +57,7 @@ var drawLines = function(usdeaths,target,
     }
      )
   
-  .on("mouseleave",function(usdeaths)
+  //.on("mouseleave",function(usdeaths)
      {
         d3.select("#tooltip")
         .classed("hidden",true)
@@ -64,19 +65,17 @@ var drawLines = function(usdeaths,target,
         .classed("selected",false)
     }
    )
-
-    lines.append("path")
-       .datum(function(usdeaths)
-                {
-                    //console.log("function")
-                    return usdeaths
-                })
-       .attr("d", lineGenerator)
+*/
+    d3.select("#graph1")
+    .select("#graph")
+    .append("path")
+       .datum(usdeaths)
+       .attr("d", lineGeneratorUs)
     
 }
 
 
-var makeTranslateString = function(x,y)
+var makeTranslateStringUs = function(x,y)
 {
     return "translate("+x+","+y+")";
 }
@@ -85,7 +84,7 @@ var makeTranslateString = function(x,y)
 //graphDim is an object that describes the width and height of the graph area.
 //margins is an object that describes the space around the graph
 //xScale and yScale are the scales for the x and y scale.
-var drawAxes = function(graphDim,margins,
+var drawAxesUs = function(graphDim,margins,
                          xScale,yScale)
 {
    
@@ -108,7 +107,7 @@ var drawAxes = function(graphDim,margins,
 
 //graphDim -object that stores dimensions of the graph area
 //margins - object that stores the size of the margins
-var drawLabels = function(graphDim,margins)
+var drawLabelsUs = function(graphDim,margins)
 {
     var labels=d3.select("#graph1")
         .append("g")
@@ -142,7 +141,7 @@ var drawLabels = function(graphDim,margins)
 
 
 //sets up several important variables and calls the functions for the visualization.
-var initGraph = function(usdeaths)
+var initGraphUs = function(usdeaths)
 {
     //size of screen
     var screen = {width:700,height:500}
@@ -151,18 +150,18 @@ var initGraph = function(usdeaths)
     
    
     
-    var graph = 
+    var graphUs = 
         {
             width:screen.width-margins.left-margins.right,
-            height:screen.height - margins.top-margins.bottom
+            height:screen.height/2 - margins.top-margins.bottom
         }
-    console.log(graph);
+    console.log(graphUs);
     
     d3.select("#graph1")
     .attr("width",screen.width)
     .attr("height",screen.height)
     
-    var target = d3.select("#graph1")
+    var targetUs = d3.select("#graph1")
     .append("g")
     .attr("id","graph")
     .attr("transform",
@@ -175,15 +174,15 @@ var initGraph = function(usdeaths)
     
     var xScale = d3.scaleLinear()
         .domain([1970,2020])
-        .range([0,graph.width])
+        .range([0,graphUs.width])
 
     var yScale = d3.scaleLinear()
         .domain([0,50])
-        .range([graph.height,0])
-    
-    drawAxes(graph,margins,xScale,yScale);
-    drawLines(usdeaths,target,xScale,yScale);
-    drawLabels(graph,margins);
+        .range([graphUs.height,0])
+    console.log(xScale(1970))
+    drawAxesUs(graphUs,margins,xScale,yScale);
+    drawLinesUs(usdeaths,targetUs,xScale,yScale);
+    drawLabelsUs(graphUs,margins);
    
 }
 

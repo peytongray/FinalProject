@@ -1,9 +1,9 @@
-var deathPromise = d3.csv("csv/usdeaths.csv")
+var adsPromise = d3.csv("csv/reproductiveads.csv")
 
-var successFCN = function(usdeaths)
+var successFCN = function(repads)
 {
-    console.log("usdeaths",usdeaths);
-    initGraph(usdeaths);
+    console.log("repads",repads);
+    initGraph(repads);
     
 }
 
@@ -13,7 +13,7 @@ var failFCN = function(error)
 }
 
 
-deathPromise.then(successFCN,failFCN);
+adsPromise.then(successFCN,failFCN);
 
 //usdeaths is the array of data
 //target is the selection of the g element to place the graph in
@@ -24,14 +24,14 @@ var drawBars = function(usdeaths,target,graphDim,xScale,yScale)
         .data(usdeaths)
         .enter()
     .append("rect")
-    .attr("x",function(year)
+    .attr("x",function(repads)
          {
-            return xscale(year.year);
+            return xscale(repads.year);
         })
          
-    .attr("y",function(year)
+    .attr("y",function(repads)
          {
-            return yscale(year.money);
+            return yscale(repads.money);
         })
           .attr("width",xScale.bandwidth)
         .attr("height",function(year)
@@ -49,7 +49,7 @@ var drawBars = function(usdeaths,target,graphDim,xScale,yScale)
             .attr("fill", "none")
             
   
-  .on("mouseover", function(usdeaths)
+  .on("mouseover", function(repads)
      {
             var xPos=d3.event.pageX;
             var yPos=d3.event.pageY;
@@ -64,7 +64,7 @@ var drawBars = function(usdeaths,target,graphDim,xScale,yScale)
     }
      )
   
-  .on("mouseleave",function(usdeaths)
+  .on("mouseleave",function(repads)
      {
         d3.select("#tooltip")
         .classed("hidden",true)
@@ -74,10 +74,10 @@ var drawBars = function(usdeaths,target,graphDim,xScale,yScale)
    )
 
     lines.append("g")
-     .datum(function(usdeaths)
+     .datum(function(repads)
                 {
                     //console.log("function")
-                    return usdeaths
+                    return repads.money
                 })
        //.attr("d", lineGenerator)
     
@@ -129,14 +129,14 @@ var drawLabels = function(graphDim,margins)
     
         labels.append("text")
             .classed("title",true)
-            .text("United States Abortion Deaths from 1973 to 2015")
+            .text("Amount Spent on Facebook Reproductive Rights Ads by 2020 Democratic Candidates")
             .attr("text-anchor","middle")
             .attr("x", margins.left+graphDim.width/2)
             .attr("y",margins.top-(10))
     
         labels.append("text")
             .classed("label",true)
-            .text("Year")
+            .text("Candidate")
             .attr("text-anchor", "middle")
             .attr("x", margins.left+graphDim.width/2)
             .attr("y", margins.top+(graphDim.height)+(30))
@@ -144,10 +144,10 @@ var drawLabels = function(graphDim,margins)
         labels.append("text")
             .attr("transform","translate(20,"+
                  (margins.top+
-                 (graph.height/2))+")")
+                ( graph.height/2))+")")
             .append("text")
             .classed("label",true)
-            .text("Number of Deaths")
+            .text("Amount Spent")
             .attr("text-anchor","middle")
             .attr("transform","rotate(90)")
                   //translate (" +graphDim.height/2+ ",-5)")
@@ -160,7 +160,7 @@ var drawLabels = function(graphDim,margins)
 
 
 //sets up several important variables and calls the functions for the visualization.
-var initGraph = function(usdeaths)
+var initGraph = function(repads)
 {
     //size of screen
     var screen = {width:800,height:600}
@@ -199,7 +199,7 @@ var initGraph = function(usdeaths)
         .range([graph.height,0])
     
     drawAxes(graph,margins,xScale,yScale);
-    drawBars(usdeaths,target,xScale,yScale);
+   // drawBars(repads,target,graph,xScale,yScale);
     drawLabels(graph,margins);
    
 }
