@@ -28,3 +28,41 @@ path
     stroke-width:6;
 }
 
+.graphone
+{
+    float: right;
+    top:200px;
+    position:absolute;
+    left:575px;
+    height:350px;
+     border:2px solid #000;
+    background-color:deepskyblue;
+}
+
+.graphtwo
+{
+    float:right;
+    top:600px;
+    position:absolute;
+    left:575px;
+    height:350px;
+     border:2px solid #000;
+    background-color:aqua;
+   
+}
+
+.atable
+{
+    float:left;
+    background-color:cornflowerblue;
+    border:2px solid #000;
+    height:800px;
+    overflow:scroll;
+}
+
+#scrolltable
+{
+    font-family:inherit;
+
+}
+

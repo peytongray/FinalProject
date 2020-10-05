@@ -3,16 +3,22 @@
     <title>CSC 160 Project Data</title>
     
     <link href="css/usdeaths.css" rel= "stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </header>
 <body>
     <p><a href = "sources.html">Back To Sources</a></p>
     <p><a href = "index.html">Back to Home</a></p>
 
-    <table>
+<h1>Welcome to the Interactive Dashboard!</h1>    
+    <h2 id="scrolltable">Scroll through the table to find each country's abortion laws  </h2>
+    <h3>Hover over the graph dots to get a closer look at the data</h3>
+    <div class="atable">
+        <table>
    <thead>
         
        <th id="country">Country</th>
        <th id="abortionlaw">Abortion Law</th>
+       
         
         </thead>
         
@@ -21,19 +27,28 @@
         </tbody>
    
     </table>
+    </div>
     
-    
+  
+<div class="graphone">
     <svg id="graph1">
     
     </svg>
+    </div>
     
     <br />
     
+<div class="graphtwo">
     <svg id="graph2">
     
     </svg>
+</div>
     
-    <div class="hidden" id="tooltip"></div>
+    <div class="hidden" id="tooltip">
+        <div><span id="deathtt"></span>
+        <span>Deaths</span></div>
+        <div><span id="yeartt"></span><span> Year</span></div>
+    </div>
     
         <script src="https://d3js.org/d3.v5.min.js"></script>
      <script src = "js/usdeaths.js"></script>

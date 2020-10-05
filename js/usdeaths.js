@@ -30,42 +30,7 @@ var drawLinesUs = function(usdeaths,target,
           {
             return yScale(usdeath.deathnumber)
             })
-   /*
-   
-  var lines= d3.select("#graph1")
-            .select("#graph")
-            .selectAll("g")
-            .data(usdeaths)
-            .enter()
-            .append("g")
-            .classed("line",true)
-            .attr("fill", "none")
-            
   
-  .on("mouseover", function(usdeaths)
-     {
-            var xPos=d3.event.pageX;
-            var yPos=d3.event.pageY;
-            d3.select("#tooltip")
-            .classed("hidden",false)
-            .style("top",yPos+"px")
-            .style("left", xPos+"px")
-      
-            d3.select(this)
-            .classed("selected",true)
-            .raise()
-    }
-     )
-  
-  //.on("mouseleave",function(usdeaths)
-     {
-        d3.select("#tooltip")
-        .classed("hidden",true)
-        d3.select(this)
-        .classed("selected",false)
-    }
-   )
-*/
     d3.select("#graph1")
     .select("#graph")
     .append("path")
@@ -74,6 +39,48 @@ var drawLinesUs = function(usdeaths,target,
     
 }
 
+var drawPlotUs = function(usdeaths,targetUs,
+                         xScale,yScale)
+{
+   targetUs 
+    .selectAll("circle")
+    .data(usdeaths)
+    .enter()
+    .append("circle")
+    .attr("cx",function(usdeath)
+    {
+        return xScale(usdeath.year);   
+    })
+    .attr("cy",function(usdeath)
+    {
+        return yScale(usdeath.deathnumber);    
+    })
+    .attr("r",3)
+    
+
+   .on("mouseenter" ,function(usdeaths)
+      {
+        console.log("usdeaths",usdeaths)
+      var xPos = d3.event.pageX;
+      var yPos = d3.event.pageY;
+      
+        d3.select("#tooltip")
+        .classed("hidden",false)
+        .style("top",yPos+"px")
+        .style("left",xPos+"px")
+        
+        d3.select("#deathtt")
+        .text(usdeaths.deathnumber);
+        
+        d3.select("#yeartt")
+        .text(usdeaths.year);
+      })//tool tip off
+    .on("mouseleave",function()
+    {
+        d3.select("#tooltip")    
+        .classed("hidden",true);
+    })
+}
 
 var makeTranslateStringUs = function(x,y)
 {
@@ -144,7 +151,7 @@ var drawLabelsUs = function(graphDim,margins)
 var initGraphUs = function(usdeaths)
 {
     //size of screen
-    var screen = {width:700,height:500}
+    var screen = {width:700,height:600}
     //how much space on each side
     var margins = {left:50,right:20,top:40,bottom:50}
     
@@ -177,13 +184,13 @@ var initGraphUs = function(usdeaths)
         .range([0,graphUs.width])
 
     var yScale = d3.scaleLinear()
-        .domain([0,50])
+        .domain([0,100])
         .range([graphUs.height,0])
     console.log(xScale(1970))
     drawAxesUs(graphUs,margins,xScale,yScale);
     drawLinesUs(usdeaths,targetUs,xScale,yScale);
     drawLabelsUs(graphUs,margins);
-   
+   drawPlotUs(usdeaths,targetUs,xScale,yScale)
 }
 
 
