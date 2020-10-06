@@ -111,9 +111,9 @@ var filterOnDeathRate = function(deathrate)
 var compareDeathRate = function(deathrate1, deathrate2)
 {   console.log("deathrate1",deathrate1)
     console.log("deathrate2",deathrate2)
-    if (deathrate1.DeathRate == deathrate2.DeathRate)
+    if (Number(deathrate1.DeathRate) == Number(deathrate2.DeathRate))
         {return 0}
-    else if (deathrate1.DeathRate > deathrate2.DeathRate)
+    else if (Number(deathrate1.DeathRate) > Number(deathrate2.DeathRate))
         {return -1}
     else {return 1}
 }

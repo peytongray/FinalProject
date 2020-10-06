@@ -1,14 +1,45 @@
+body
+{
+    background-color:#E6E6FA;
+}
 #choose
 {
     font-family:Impact, Charcoal, sans-serif;
     font-size:50px;
+    background-color:#9932CC;
+    border:2px solid #000;
 }
 .actiontable
 {
     float:left;
-    background-color:aliceblue;
+    background-color:#9370DB;
     border:2px solid #000;
     height:800px;
     overflow:scroll;
-    height:360px;
+    height:350px;
+    margin-right:10px;
+}
+#disclaimer
+{
+    float:left;
+    border:2px solid #000;
+    font-size:15px;
+}
+#click
+{
+    font-family:"Lucida Console", Courier, monospace;
+}
+#argument
+{
+    margin-left:10px;
+    border:2px solid #000;
+   font-family:"Lucida Console", Courier, monospace;
+    background-color:#DDA0DD;
+}
+#call
+{
+    font-family:Impact, Charcoal, sans-serif;
+    font-size:23px;
+    border:2px solid #000;
+    background-color:#DDA0DD;
 }
