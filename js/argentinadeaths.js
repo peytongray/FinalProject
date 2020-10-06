@@ -182,7 +182,7 @@ var initGraphArg = function(argdeaths)
                         // {return quiz.day});
     
     var xScale = d3.scaleLinear()
-        .domain([1970,2020])
+        .domain([2000,2020])
         .range([0,graphArg.width])
 
     var yScale = d3.scaleLinear()

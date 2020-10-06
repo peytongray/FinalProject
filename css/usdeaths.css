@@ -31,7 +31,7 @@ path
 .graphone
 {
     float: right;
-    top:200px;
+    top:300px;
     position:absolute;
     left:575px;
     height:350px;
@@ -42,7 +42,7 @@ path
 .graphtwo
 {
     float:right;
-    top:600px;
+    top:700px;
     position:absolute;
     left:575px;
     height:350px;
@@ -62,7 +62,26 @@ path
 
 #scrolltable
 {
-    font-family:inherit;
-
+    font-family:"Comic Sans MS", cursive, sans-serif;
+   
 }
 
+#welcome
+{
+    font-family:Impact, Charcoal, sans-serif;
+    background-color:darkturquoise;
+    font-size:45px;
+    border:2px solid #000;
+}
+
+#hover
+{
+    font-family:"Comic Sans MS", cursive, sans-serif;
+    font-size:20px;
+    
+}
+
+body
+{
+    background-color:#E0FFFF;
+}
