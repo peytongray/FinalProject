@@ -4,7 +4,7 @@ var successFcn = function(law)
 {
     console.log("law",law);
     drawTable(law);
-   // sortOngetStatus(law);
+   //sortOnLaw(law);
 }
 
 var failFcn = function(error)
@@ -72,19 +72,28 @@ var drawTable = function(law)
    
     
 }
+/*
+var compareLaws = function(law1, law2)
+{   console.log("law1",law1)
+    console.log("law2",law2)
+    if (law1.Law == law2.Law)
+        {return 0}
+    else if (law1.Law > law2.Law)
+        {return -1}
+    else {return 1}
+}
 
-/*var sortOngetStatus = function(law)
+var sortOnLaw = function(law)
 {   d3. select ("#abortionlaw")
-    .on("click", function() 
+    .on ("click", function() 
          {
-            law.sort(getStatus)
-           
+            law.sort(compareLaws)
+           console.log("law",law)
             console.log("clicked")
             
-            d3.select ("table thead")
+            d3.select ("table tbody")
             .selectAll ("*")
             .remove()
-            drawTable(law) 
+          drawTable(law) 
         })
-
-}*/
+*/
