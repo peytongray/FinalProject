@@ -16,7 +16,7 @@ body
     border:2px solid #000;
     height:800px;
     overflow:scroll;
-    height:350px;
+    height:340px;
     margin-right:10px;
 }
 #disclaimer
@@ -27,20 +27,19 @@ body
 }
 #click
 {
-    font-family:"Lucida Console", Courier, monospace;
+    
 }
 #argument
 {
     margin-left:10px;
     border:2px solid #000;
-   font-family:"Lucida Console", Courier, monospace;
-    font-size:13px;
+    font-size:16px;
     background-color:#DDA0DD;
 }
 #call
 {
     font-family:Impact, Charcoal, sans-serif;
-    font-size:23px;
+    font-size:24px;
     border:2px solid #000;
     background-color:#DDA0DD;
 }
@@ -52,4 +51,28 @@ body
     background-color:#9932CC;
      border:2px solid #000;
     
+}
+.fa-close
+{
+    color:red;
+}
+.fa-check
+{
+    color:lawngreen;
+}
+.fa-money
+{
+    color:green;
+}
+.fa-female
+{
+    color:#B22222;
+}
+.fa-heartbeat
+{
+    color:yellow;
+}
+.fa-meh-o
+{
+    color:orange;
 }

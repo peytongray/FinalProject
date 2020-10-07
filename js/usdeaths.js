@@ -151,7 +151,7 @@ var drawLabelsUs = function(graphDim,margins)
 var initGraphUs = function(usdeaths)
 {
     //size of screen
-    var screen = {width:700,height:600}
+    var screen = {width:600,height:500}
     //how much space on each side
     var margins = {left:50,right:20,top:40,bottom:50}
     

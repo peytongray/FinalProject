@@ -153,7 +153,7 @@ var drawLabelsArg = function(graphDim,margins)
 var initGraphArg = function(argdeaths)
 {
     //size of screen
-    var screen = {width:700,height:600}
+    var screen = {width:600,height:500}
     //how much space on each side
     var margins = {left:50,right:20,top:40,bottom:50}
     
@@ -182,7 +182,7 @@ var initGraphArg = function(argdeaths)
                         // {return quiz.day});
     
     var xScale = d3.scaleLinear()
-        .domain([2000,2020])
+        .domain([1970,2020])
         .range([0,graphArg.width])
 
     var yScale = d3.scaleLinear()

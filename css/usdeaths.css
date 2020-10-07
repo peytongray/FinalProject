@@ -31,23 +31,24 @@ path
 .graphone
 {
     float: right;
-    top:300px;
+    top:220px;
     position:absolute;
     left:575px;
-    height:350px;
-     border:2px solid #000;
+    height:250px;
+    border:2px solid #000;
     background-color:deepskyblue;
 }
 
 .graphtwo
 {
     float:right;
-    top:700px;
+    top:475px;
     position:absolute;
     left:575px;
-    height:350px;
+    height:250px;
      border:2px solid #000;
     background-color:aqua;
+    
    
 }
 
@@ -56,13 +57,12 @@ path
     float:left;
     background-color:cornflowerblue;
     border:2px solid #000;
-    height:800px;
+    height:500px;
     overflow:scroll;
 }
 
 #scrolltable
 {
-    font-family:"Comic Sans MS", cursive, sans-serif;
    
 }
 
@@ -70,13 +70,12 @@ path
 {
     font-family:Impact, Charcoal, sans-serif;
     background-color:darkturquoise;
-    font-size:45px;
+    font-size:40px;
     border:2px solid #000;
 }
 
 #hover
 {
-    font-family:"Comic Sans MS", cursive, sans-serif;
     font-size:20px;
     
 }
@@ -84,4 +83,28 @@ path
 body
 {
     background-color:#E0FFFF;
+}
+.fa-close
+{
+    color:red;
+}
+.fa-check
+{
+    color:lawngreen;
+}
+.fa-money
+{
+    color:green;
+}
+.fa-female
+{
+    color:#B22222;
+}
+.fa-heartbeat
+{
+    color:yellow;
+}
+.fa-meh-o
+{
+    color:orange;
 }
